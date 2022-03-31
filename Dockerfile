@@ -1,7 +1,8 @@
 FROM node:14-alpine
 COPY . .
-RUN npm install --only=production
+RUN npm install
 ENV PORT ${PORT}
-RUN echo "PORT=${PORT}" > .env
+ARG PORT=${PORT}
 EXPOSE ${PORT}
+RUN echo "PORT=${PORT}" > .env
 CMD node dist/main
