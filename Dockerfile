@@ -1,4 +1,5 @@
 FROM node:14-alpine as build-env
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 ADD . /app
 WORKDIR /app
 RUN npm install --frozen-lockfile
