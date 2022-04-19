@@ -1,8 +1,9 @@
 FROM node:14-alpine as build-env
 ADD . /app
 WORKDIR /app
-RUN npm install --frozen-lockfile
+RUN npm ci
 RUN npm run build
+
 FROM node:14-alpine
 WORKDIR /app
 COPY --from=build-env /app/package.json /app/package-lock.json ./
